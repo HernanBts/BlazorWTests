@@ -9,12 +9,12 @@ namespace Orders.Frontend.Pages.Countries
     public partial class CountryForm
     {
         private EditContext editContext = null!;
-        [Inject] private SweetAlertService SweetAlertService { get; set; } = null!;
+
         [EditorRequired, Parameter] public Country Country { get; set; } = null!;
         [EditorRequired, Parameter] public EventCallback OnValidSubmit { get; set; }
         [EditorRequired, Parameter] public EventCallback ReturnAction { get; set; }
-
-        public bool FormPostedSuccessfully { get; set; } = false;
+        [Inject] public SweetAlertService SweetAlertService { get; set; } = null!;
+        public bool FormPostedSuccessfully { get; set; }
 
         protected override void OnInitialized()
         {
@@ -24,7 +24,6 @@ namespace Orders.Frontend.Pages.Countries
         private async Task OnBeforeInternalNavigation(LocationChangingContext context)
         {
             var formWasEdited = editContext.IsModified();
-
             if (!formWasEdited || FormPostedSuccessfully)
             {
                 return;
@@ -34,10 +33,9 @@ namespace Orders.Frontend.Pages.Countries
             {
                 Title = "Confirmación",
                 Text = "¿Deseas abandonar la página y perder los cambios?",
-                Icon = SweetAlertIcon.Warning,
-                ShowCancelButton = true
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
             });
-
             var confirm = !string.IsNullOrEmpty(result.Value);
             if (confirm)
             {

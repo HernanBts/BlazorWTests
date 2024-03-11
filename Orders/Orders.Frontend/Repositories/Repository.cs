@@ -55,7 +55,7 @@ namespace Orders.Frontend.Repositories
         public async Task<HttpResponseWrapper<object>> DeleteAsync<T>(string url)
         {
             var responseHttp = await _httpClient.DeleteAsync(url);
-            return new HttpResponseWrapper<object>(null, !responseHttp.IsSuccessStatusCode, responseHttp);
+            return new HttpResponseWrapper<object>(null, !responseHttp.IsSuccessStatusCode, responseHttp); ;
         }
 
         public async Task<HttpResponseWrapper<object>> PutAsync<T>(string url, T model)
