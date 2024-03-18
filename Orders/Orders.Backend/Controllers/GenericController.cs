@@ -56,7 +56,7 @@ namespace Orders.Backend.Controllers
             return BadRequest(action.Message);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public virtual async Task<IActionResult> DeleteAsync(int id)
         {
             var action = await _unitOfWork.DeleteAsync(id);

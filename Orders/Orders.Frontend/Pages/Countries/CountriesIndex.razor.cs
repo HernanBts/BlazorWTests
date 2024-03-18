@@ -11,7 +11,7 @@ namespace Orders.Frontend.Pages.Countries
     {
         [Inject] private IRepository repository { get; set; } = null!;
         [Inject] private NavigationManager navigationManager { get; set; } = null!;
-        [Inject] public SweetAlertService sweetAlertService { get; set; } = null!;
+        [Inject] private SweetAlertService sweetAlertService { get; set; } = null!;
 
         public List<Country>? Countries { get; set; }
         protected async override Task OnInitializedAsync()
