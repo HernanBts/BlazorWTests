@@ -12,6 +12,7 @@
             <thead>
                 <tr>
                     <th>Pais</th>
+                    <th>Provincias</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
@@ -20,9 +21,11 @@
                 {
                     <tr>
                         <td>@item.Name</td>
+                        <td>@item.StatesNumber</td>
                         <td>
-                            <a href="/countries/edit/@item.Id" class="btn btn-warning">Editar</a>
-                            <button @onclick=@(() => DeleteAsync(item)) class="btn btn-danger">Borrar</button>
+                            <a href="/countries/edit/@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <button class="btn btn-info btn-sm">Detalle</button>
+                            <button @onclick=@(() => DeleteAsync(item)) class="btn btn-danger btn-sm">Borrar</button>
                         </td>
                     </tr>
                 }
