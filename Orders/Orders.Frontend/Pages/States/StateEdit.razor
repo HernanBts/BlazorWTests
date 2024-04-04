@@ -1,0 +1,12 @@
+﻿@page "/states/edit/{Id:int}"
+
+<h3>Editar Provincia</h3>
+
+@if (state is null)
+{
+    <Loading />
+}
+else
+{
+    <FormWithName @ref="stateForm" Title="Provincia:" Model="state" OnValidSubmit="EditAsync" ReturnAction="Return" />
+}
