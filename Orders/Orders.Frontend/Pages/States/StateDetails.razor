@@ -1,38 +1,35 @@
-﻿@page "/countries/details/{CountryId:int}"
+﻿@page "/states/details/{StateId:int}"
 
-@if (country is null)
+@if (state is null)
 {
     <Loading />
 }
 else
 {
-    <h3>@country.Name</h3>
+    <h3>@state.Name</h3>
 
     <div class="mb-3">
-        <a class="btn btn-primary" href="/states/create/@country.Id">Nueva Provincia</a>
-        <a class="btn btn-success" href="/countries">Volver</a>
+        <a class="btn btn-primary" href="/cities/create/@state.Id">Nueva Ciudad</a>
+        <a class="btn btn-success" href="/countries/details/@state.CountryId">Volver</a>
     </div>
 
     <h3>Provincias</h3>
-    <GenericList MyList="country.States!.ToList()">
+    <GenericList MyList="state.Cities!.ToList()">
         <Body>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Provincia</th>
-                        <th>Ciudades</th>
+                        <th>Ciudad</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in country.States!)
+                    @foreach (var item in state.Cities!)
                     {
                         <tr>
                             <td>@item.Name</td>
-                            <td>@item.CitiesNumber</td>
                             <td>
-                                <a href="/states/edit/@item.Id" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="/states/details/@item.Id" class="btn btn-info btn-sm">Detalle</a>
+                                <a href="/cities/edit/@item.Id" class="btn btn-warning btn-sm">Editar</a>
                                 <button @onclick=@(() => DeleteAsync(item)) class="btn btn-danger btn-sm">Borrar</button>
                             </td>
                         </tr>
