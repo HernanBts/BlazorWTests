@@ -19,6 +19,6 @@ namespace Orders.Shared.Entities
 
         public int StateId { get; set; }
 
-        public State? States { get; set; }
+        public State? State { get; set; }
     }
 }
